@@ -80,12 +80,12 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/languages\/.keep" : {
+    "\/languages\/fcnmm.pot" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 1,
-      "oAP" : "\/languages\/.keep",
+      "oAP" : "\/languages\/fcnmm.pot",
       "oF" : 1
     },
     "\/LICENSE" : {
