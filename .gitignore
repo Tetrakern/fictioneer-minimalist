@@ -1,0 +1,5 @@
+# IGNORE
+.DS_Store
+.vscode
+wp-cli.phar
+/cache

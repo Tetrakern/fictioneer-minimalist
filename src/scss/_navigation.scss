@@ -1,0 +1,116 @@
+.main-navigation {
+  margin: 4px 0 0;
+
+  &._collapse-on-mobile .main-navigation__left {
+    display: flex;
+    content-visibility: visible;
+
+    @include bp(desktop) {
+      display: block;
+    }
+
+    .main-navigation__list {
+      @media only screen and (max-width: 639px) {
+        display: none;
+        content-visibility: hidden;
+      }
+    }
+  }
+
+  &.is-sticky {
+    --navigation-border-color: transparent;
+  }
+
+  &__wrapper {
+    display: block;
+    padding: 0 var(--layout-spacing-horizontal-small);
+
+    @include bp(400px) {
+      padding: 0 var(--layout-spacing-horizontal);
+    }
+  }
+
+  &__left {
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--navigation-border-color);
+    border-width: 1px 0;
+    max-width: unset;
+    overflow: visible;
+
+    @include bp(desktop) {
+      display: block;
+    }
+  }
+
+  &__list {
+    mask-image: linear-gradient(to right, transparent 8px, black 16px, black calc(100% - 16px), transparent calc(100% - 8px));
+    -webkit-mask-image: linear-gradient(to right, transparent 8px, black 16px, black calc(100% - 16px), transparent calc(100% - 8px));
+
+    @include bp(desktop) {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+
+    > .menu-item {
+      border-radius: 0;
+    }
+  }
+
+  .menu-item {
+    :is(a,label) {
+      letter-spacing: 0;
+    }
+  }
+}
+
+:where(.main-navigation__list, .icon-menu) {
+  > :where(.menu-item, .page_item) {
+    > .sub-menu:where(:not(.follow-notifications)) {
+      &::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: var(--menu-arrow-left, 32px);
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 6px solid var(--navigation-submenu-background);
+        height: 0;
+        width: 0;
+      }
+    }
+  }
+}
+
+:is(.main-navigation, .icon-menu) {
+  .sub-menu {
+    border-radius: var(--layout-border-radius-small);
+
+    .menu-item {
+      &:first-child {
+        border-radius: var(--layout-border-radius-small) var(--layout-border-radius-small) 0 0;
+      }
+    }
+  }
+}
+
+.icon-menu {
+  --menu-arrow-left: 12px;
+
+  &._in-navigation {
+    display: flex !important;
+    content-visibility: visible !important;
+  }
+
+  .menu-item .follow-menu-item {
+    display: none;
+
+    @include bp(desktop) {
+      display: flex;
+    }
+  }
+}
+
+.nav-terms-submenu {
+  font-size: 14px;
+}
