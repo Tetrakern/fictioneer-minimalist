@@ -123,6 +123,19 @@
       "rFN" : 0,
       "uCM" : 0
     },
+    "\/repo\/assets\/fictioneer_minimalist.jpg" : {
+      "ft" : 16384,
+      "iS" : 306572,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/repo\/assets\/fictioneer_minimalist.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/screenshot.png" : {
       "ft" : 32768,
       "iS" : 64451,
