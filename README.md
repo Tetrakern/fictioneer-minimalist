@@ -2,6 +2,8 @@
 
 This is a minimalist WordPress child theme for [Fictioneer](https://github.com/Tetrakern/fictioneer). To use this theme, ensure that the parent theme is also installed and do not rename any folders. Always download the zip file from the [Releases](https://github.com/Tetrakern/fictioneer-minimalist/releases) page.
 
+[Demo Page](https://minimalist.fictioneer-theme.com/)
+
 ## Recommended Settings
 
 As the child theme builds upon the main theme, some settings and options work better than others or have been removed. The following recommendations should be applied under **Appearance > Customize**; feel free to make changes as you see fit.
