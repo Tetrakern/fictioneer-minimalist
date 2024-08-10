@@ -4,6 +4,10 @@ if ( ! defined( 'FICTIONEER_ENABLE_MENU_TRANSIENTS' ) ) {
   define( 'FICTIONEER_ENABLE_MENU_TRANSIENTS', true );
 }
 
+if ( ! defined( 'FICTIONEER_UPDATE_CHECK_TIMEOUT' ) ) {
+  define( 'FICTIONEER_UPDATE_CHECK_TIMEOUT', 43200 ); // 12 hours
+}
+
 /**
  * PHP rand()
  *
@@ -116,3 +120,29 @@ function fictioneer_add_taxonomy_submenus( $menu ) {}
  */
 
 function fictioneer_icon( $icon, $classes = '', $id = '', $inserts = '' ) {}
+
+/**
+ * Extracts the release notes from the update message
+ *
+ * @since 5.19.1
+ *
+ * @param string $message  Update message received.
+ *
+ * @return string The release notes or original message if not found.
+ */
+
+function fictioneer_prepare_release_notes( $message ) {}
+
+/**
+ * Sanitizes an URL
+ *
+ * @since 5.19.1
+ *
+ * @param string      $url         The URL entered.
+ * @param string|null $match       Optional. URL must start with this string.
+ * @param string|null $preg_match  Optional. String for a preg_match() test.
+ *
+ * @return string The sanitized URL or an empty string if invalid.
+ */
+
+function fictioneer_sanitize_url( $url, $match = null, $preg_match = null ) {}

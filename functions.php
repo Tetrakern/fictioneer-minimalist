@@ -6,6 +6,7 @@
 
 define( 'CHILD_VERSION', '1.0.0' );
 define( 'CHILD_NAME', 'Fictioneer Minimalist' );
+define( 'CHILD_RELEASE_TAG', 'v1.0.0' );
 
 // =============================================================================
 // CHILD THEME SETUP
@@ -51,6 +52,187 @@ function fcnmm_customize_parent() {
   remove_action( 'fictioneer_main', 'fictioneer_page_background' );
 }
 add_action( 'init', 'fcnmm_customize_parent' );
+
+// =============================================================================
+// CHECK FOR UPDATES
+// =============================================================================
+
+/**
+ * Get basic child theme info
+ *
+ * @since 1.0.0
+ *
+ * @return array Associative array with theme info.
+ */
+
+function fcnmm_get_theme_info() {
+  // Setup
+  $info = get_option( 'fcnmm_theme_info' ) ?: [];
+
+  // Set up if missing
+  if ( ! $info || ! is_array( $info ) ) {
+    $info = array(
+      'last_update_check' => current_time( 'mysql', 1 ),
+      'last_update_version' => '',
+      'last_update_nag' => current_time( 'mysql', 1 ),
+      'last_update_notes' => '',
+      'last_version_download_url' => '',
+      'setup' => 0,
+      'version' => CHILD_VERSION
+    );
+
+    update_option( 'fcnmm_theme_info', $info, 'yes' );
+  }
+
+  // Merge with defaults (in case of incomplete data)
+  $info = array_merge(
+    array(
+      'last_update_check' => current_time( 'mysql', 1 ),
+      'last_update_version' => '',
+      'last_update_nag' => '',
+      'last_update_notes' => '',
+      'last_version_download_url' => '',
+      'setup' => 0,
+      'version' => CHILD_VERSION
+    ),
+    $info
+  );
+
+  // Return info
+  return $info;
+}
+
+/**
+ * Check Github repository for a new release of the child theme
+ *
+ * 1.0.0
+ *
+ * @return boolean True if there is a newer version, false if not.
+ */
+
+function fcnmm_check_for_updates() {
+  global $pagenow;
+
+  // Setup
+  $theme_info = fcnmm_get_theme_info();
+  $last_check_timestamp = strtotime( $theme_info['last_update_check'] ?? 0 );
+  $remote_version = $theme_info['last_update_version'];
+  $is_updates_page = $pagenow === 'update-core.php';
+
+  // Only call API every n seconds, otherwise check database
+  if (
+    ( ! $is_updates_page && current_time( 'timestamp', true ) < $last_check_timestamp + FICTIONEER_UPDATE_CHECK_TIMEOUT ) ||
+    ( $_GET['action'] ?? 0 ) === 'do-plugin-upgrade'
+  ) {
+    if ( ! $remote_version ) {
+      return false;
+    }
+
+    return version_compare( $remote_version, CHILD_RELEASE_TAG, '>' );
+  }
+
+  // Remember this check
+  $theme_info['last_update_check'] = current_time( 'mysql', 1 );
+
+  // Request to repository
+  $response = wp_remote_get(
+    'https://api.github.com/repos/Tetrakern/fictioneer-minimalist/releases/latest',
+    array(
+      'headers' => array(
+        'User-Agent' => 'FICTIONEER-MINIMALIST',
+        'Accept' => 'application/vnd.github+json',
+        'X-GitHub-Api-Version' => '2022-11-28'
+      )
+    )
+  );
+
+  // Abort if request failed or is not a 2xx success status code
+  if ( is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) >= 300 ) {
+    // Remember check to avoid continuous tries on each page load
+    update_option( 'fcnmm_theme_info', $theme_info );
+
+    return false;
+  }
+
+  // Decode JSON to array
+  $release = json_decode( wp_remote_retrieve_body( $response ), true );
+  $release_tag = sanitize_text_field( $release['tag_name'] ?? '' );
+
+  // Abort if request did not return expected data
+  if ( ! $release_tag ) {
+    return false;
+  }
+
+  // Add to theme info
+  $theme_info['last_update_version'] = $release_tag;
+  $theme_info['last_update_notes'] = sanitize_textarea_field( $release['body'] ?? '' );
+  $theme_info['last_update_nag'] = ''; // Reset
+
+  if ( $release['assets'] ?? 0 ) {
+    $theme_info['last_version_download_url'] = fictioneer_sanitize_url( $release['assets'][0]['browser_download_url'] ?? '' );
+  } else {
+    $theme_info['last_version_download_url'] = '';
+  }
+
+  // Update info in database
+  update_option( 'fcnmm_theme_info', $theme_info );
+
+  // Compare with currently installed version
+  return version_compare( $release_tag, CHILD_RELEASE_TAG, '>' );
+}
+
+/**
+ * Show notice when a newer version of the child theme is available
+ *
+ * @since 1.0.0
+ */
+
+function fcnmm_admin_update_notice() {
+  // Guard
+  if (
+    ! current_user_can( 'install_themes' ) ||
+    ( $_GET['action'] ?? 0 ) === 'upload-theme' ||
+    ! fcnmm_check_for_updates()
+  ) {
+    return;
+  }
+
+  global $pagenow;
+
+  // Setup
+  $theme_info = fcnmm_get_theme_info();
+  $last_update_nag = strtotime( $theme_info['last_update_nag'] ?? 0 );
+  $is_updates_page = $pagenow == 'update-core.php';
+
+  // Show only once every n seconds
+  if ( ! $is_updates_page && current_time( 'timestamp', true ) < $last_update_nag + 60 ) {
+    return;
+  }
+
+  // Render notice
+  $notes = fictioneer_prepare_release_notes( $theme_info['last_update_notes'] ?? '' );
+
+  wp_admin_notice(
+    sprintf(
+      __( '<strong>Fictioneer Minimalist %1$s</strong> is available. Please <a href="%2$s" target="_blank">download</a> and install the latest version at your next convenience.%3$s', 'fcnmm' ),
+      $theme_info['last_update_version'],
+      'https://github.com/Tetrakern/fictioneer-minimalist/releases',
+      $notes ? '<br><details><summary>' . __( 'Release Notes', 'fcnmm' ) . '</summary>' . $notes . '</details>' : ''
+    ),
+    array(
+      'type' => 'warning',
+      'dismissible' => true,
+      'additional_classes' => ['fictioneer-update-notice']
+    )
+  );
+
+  // Remember notice
+  $theme_info['last_update_nag'] = current_time( 'mysql', 1 );
+
+  // Update info in database
+  update_option( 'fcnmm_theme_info', $theme_info );
+}
+add_action( 'admin_notices', 'fcnmm_admin_update_notice' );
 
 // =============================================================================
 // CUSTOMIZER
