@@ -15,7 +15,7 @@
  */
 
 function custom_initialize() {
-  add_filter( 'fictioneer_filter_post_meta_items', 'custom_modify_post_meta_items' );
+  // add_filter( 'fictioneer_filter_post_meta_items', 'custom_modify_post_meta_items' );
 }
 add_action( 'after_setup_theme', 'custom_initialize', 99 );
 
