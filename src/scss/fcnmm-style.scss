@@ -2,25 +2,15 @@
 @import '_mixins';
 
 :root {
+  // === UNSORTED ==============================================================
+
   --site-width: 896px;
+  --site-bg-color: var(--page-bg-color);
 
   // === SIDEBAR ===============================================================
 
   --sidebar-mobile-divider: 1px solid var(--layout-lineart-color);
   --sidebar-mobile-divider-margin: 0 var(--layout-spacing-horizontal-small);
-
-  // === OVERRIDES =============================================================
-
-  body {
-    --layout-spacing-horizontal: 16px;
-    --layout-spacing-horizontal-small: #{get_clamp(10, 16, 320, 375, '%')};
-  }
-}
-
-:root, :root[data-theme=base] {
-  // === UNSORTED ==============================================================
-
-  --site-bg-color: var(--page-bg-color);
 
   // === CONTENT LISTS =========================================================
 
@@ -65,6 +55,11 @@
   --layout-hr-border: 1px solid var(--hr-border-color, var(--layout-lineart-color));
   --layout-hr-border-dashed: 1px dashed var(--hr-border-color, var(--layout-lineart-color));
   --layout-link-color-hover: var(--fg-100);
+
+  body {
+    --layout-spacing-horizontal: 16px;
+    --layout-spacing-horizontal-small: #{get_clamp(10, 16, 320, 375, '%')};
+  }
 
   // === PAGE ==================================================================
 
