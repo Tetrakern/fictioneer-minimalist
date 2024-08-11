@@ -8,6 +8,11 @@ define( 'CHILD_VERSION', '1.0.0' );
 define( 'CHILD_NAME', 'Fictioneer Minimalist' );
 define( 'CHILD_RELEASE_TAG', 'v1.0.0' );
 
+// Boolean: Base theme switch in site settings
+if ( ! defined( 'FICTIONEER_THEME_SWITCH' ) ) {
+  define( 'FICTIONEER_THEME_SWITCH', false );
+}
+
 // =============================================================================
 // CHILD THEME SETUP
 // =============================================================================
