@@ -43,6 +43,12 @@ As the child theme builds upon the main theme, some settings and options work be
 * **Card Footer Style:** Combined
 * **Card Shadow:** Shadow Small
 
+## Customization
+
+You cannot make a child theme of a child theme, which can pose a challenge for further customization. The cleanest way is to add your own must-use plugin to the `/wp-content/mu-plugins/` directory (create one if it does not exist). You can copy the provided [customize-mu-plugin.php](customize-mu-plugin.php) as example — it’s really just a single PHP file.
+
+The plugin file includes an example filter to change the post meta row, removing icons and separating the items with a pipe. You can use this by uncommenting the `add_filter()` line in `custom_initialize()` simply take it as a guide on how to add actions and filters yourself. Note that mu-plugins are executes **before** normal plugins and the theme; unless you delay functions, as shown in `custom_initialize()`, nothing of the plugins and themes will be available.
+
 ## Screenshots
 
 ![Screenshot Collage](repo/assets/fictioneer_minimalist.jpg?raw=true)
