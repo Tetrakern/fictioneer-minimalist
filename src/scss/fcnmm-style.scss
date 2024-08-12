@@ -193,22 +193,12 @@
   }
 }
 
-:root.no-covers .story {
-  :is(.story__header, .story__header:not(._no-thumbnail)) {
-    padding-top: var(--layout-spacing-vertical);
-  }
-}
-
 @import '_header';
 @import '_navigation';
 @import '_footer';
 
 .follow-title-link {
   font-weight: 400;
-}
-
-body[class*="page-template-singular-canvas"] .footer {
-  margin-top: var(--layout-spacing-vertical);
 }
 
 .current-reading::after,

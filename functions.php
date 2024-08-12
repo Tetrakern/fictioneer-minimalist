@@ -592,24 +592,3 @@ function fcnmm_header_image( $args ) {
   <?php // <--- End HTML
 }
 add_action( 'fictioneer_site', 'fcnmm_header_image', 25 );
-
-// =============================================================================
-// STORY
-// =============================================================================
-
-/**
- * Adds default top padding to story header
- *
- * @since 1.0.0
- *
- * @param array $classes  CSS classes applied to story header.
- *
- * @return array Updated CSS classes.
- */
-
-function fcnmm_modify_story_header_classes( $classes ) {
-  $classes[] = 'padding-top';
-
-  return $classes;
-}
-add_filter( 'fictioneer_filter_story_header_classes', 'fcnmm_modify_story_header_classes' );
