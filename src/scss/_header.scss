@@ -72,9 +72,14 @@
     .fcnmm-header__identity {
       display: grid;
     }
+  }
 
-    .custom-logo-link {
-      transform: translateY(0.1em);
+  &:where(._no-tagline) {
+    .fcnmm-header__identity {
+      grid-template-areas:
+        'logo top-space'
+        'logo title'
+        'logo bottom-space';
     }
   }
 }
