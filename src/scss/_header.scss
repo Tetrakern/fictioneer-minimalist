@@ -59,6 +59,7 @@
 
   .custom-logo-link {
     grid-area: logo;
+    align-self: center;
     font-size: var(--site-title-font-size);
   }
 
