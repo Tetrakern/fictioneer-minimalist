@@ -13,6 +13,11 @@ if ( ! defined( 'FICTIONEER_THEME_SWITCH' ) ) {
   define( 'FICTIONEER_THEME_SWITCH', false );
 }
 
+// Integer: Update check timeout
+if ( ! defined( 'FCNMM_UPDATE_CHECK_TIMEOUT' ) ) {
+  define( 'FCNMM_UPDATE_CHECK_TIMEOUT', 43200 ); // 12 hours
+}
+
 // =============================================================================
 // CHILD THEME SETUP
 // =============================================================================
@@ -29,7 +34,7 @@ add_action( 'after_setup_theme', 'fcnmm_theme_setup' );
 
 function fcnmm_enqueue_styles_and_scripts() {
   // Setup
-  $cache_bust = get_option( 'fictioneer_cache_bust' );
+  $cache_bust = get_option( 'fictioneer_cache_bust' ) ?: CHILD_VERSION;
   $parenthandle = 'fictioneer-application';
 
   // Add child theme styles
@@ -126,7 +131,7 @@ function fcnmm_check_for_updates() {
 
   // Only call API every n seconds, otherwise check database
   if (
-    ( ! $is_updates_page && current_time( 'timestamp', true ) < $last_check_timestamp + FICTIONEER_UPDATE_CHECK_TIMEOUT ) ||
+    ( ! $is_updates_page && current_time( 'timestamp', true ) < $last_check_timestamp + FCNMM_UPDATE_CHECK_TIMEOUT ) ||
     ( $_GET['action'] ?? 0 ) === 'do-plugin-upgrade'
   ) {
     if ( ! $remote_version ) {
@@ -173,7 +178,7 @@ function fcnmm_check_for_updates() {
   $theme_info['last_update_notes'] = sanitize_textarea_field( $release['body'] ?? '' );
   $theme_info['last_update_nag'] = ''; // Reset
 
-  if ( $release['assets'] ?? 0 ) {
+  if ( ( $release['assets'] ?? 0 ) && function_exists( 'fictioneer_sanitize_url' ) ) {
     $theme_info['last_version_download_url'] = fictioneer_sanitize_url( $release['assets'][0]['browser_download_url'] ?? '' );
   } else {
     $theme_info['last_version_download_url'] = '';
@@ -215,7 +220,11 @@ function fcnmm_admin_update_notice() {
   }
 
   // Render notice
-  $notes = fictioneer_prepare_release_notes( $theme_info['last_update_notes'] ?? '' );
+  if ( function_exists( 'fictioneer_prepare_release_notes' ) ) {
+    $notes = fictioneer_prepare_release_notes( $theme_info['last_update_notes'] ?? '' );
+  } else {
+    $notes = sanitize_textarea_field( $theme_info['last_update_notes'] ?? '' );
+  }
 
   wp_admin_notice(
     sprintf(

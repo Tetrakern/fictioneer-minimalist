@@ -4,10 +4,6 @@ if ( ! defined( 'FICTIONEER_ENABLE_MENU_TRANSIENTS' ) ) {
   define( 'FICTIONEER_ENABLE_MENU_TRANSIENTS', true );
 }
 
-if ( ! defined( 'FICTIONEER_UPDATE_CHECK_TIMEOUT' ) ) {
-  define( 'FICTIONEER_UPDATE_CHECK_TIMEOUT', 43200 ); // 12 hours
-}
-
 /**
  * PHP rand()
  *
