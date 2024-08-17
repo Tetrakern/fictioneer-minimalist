@@ -4,9 +4,9 @@
 // CONSTANTS
 // =============================================================================
 
-define( 'CHILD_VERSION', '1.0.1' );
+define( 'CHILD_VERSION', '1.0.2' );
 define( 'CHILD_NAME', 'Fictioneer Minimalist' );
-define( 'CHILD_RELEASE_TAG', 'v1.0.1' );
+define( 'CHILD_RELEASE_TAG', 'v1.0.2' );
 
 // Boolean: Base theme switch in site settings
 if ( ! defined( 'FICTIONEER_THEME_SWITCH' ) ) {
