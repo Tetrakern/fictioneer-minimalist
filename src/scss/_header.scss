@@ -23,7 +23,6 @@
 
     @include bp(desktop) {
       flex-direction: row;
-      padding: 0 calc(var(--layout-spacing-horizontal) - 10px) 0 var(--layout-spacing-horizontal); // Account for icon padding
     }
   }
 
@@ -55,6 +54,15 @@
     font: 400 var(--site-title-tagline-font-size)/1.1 var(--ff-site-title);
     letter-spacing: 0;
     margin-top: 4px;
+  }
+
+  &__spacer {
+    flex: 1 1 auto;
+    display: none;
+
+    @include bp(desktop) {
+      display: block;
+    }
   }
 
   .custom-logo-link {
