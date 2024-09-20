@@ -30,24 +30,6 @@
   --bg-900-free: #{hsl_code_free(222, 25, 8)};
   --bg-950-free: #{hsl_code_free(222, 60, 4)};
 
-  // === FOREGROUNDS ===========================================================
-
-  &,
-  .chapter-formatting {
-    --fg-100: #{hsl_font_code(222, 40, 94)};
-    --fg-200: #{hsl_font_code(222, 26, 90)};
-    --fg-300: #{hsl_font_code(224, 20, 86)};
-    --fg-400: #{hsl_font_code(222, 18, 81)};
-    --fg-500: #{hsl_font_code(222, 18, 73)}; // Contrast ratio vs bg-700 ~ 7.12
-    --fg-600: #{hsl_font_code(224, 18, 68)}; // Contrast ratio vs bg-700 ~ 6.04
-    --fg-700: #{hsl_font_code(224, 16, 62)}; // Contrast ratio vs bg-700 ~ 4.99
-    --fg-800: #{hsl_font_code(222, 12, 58.1)}; // Contrast ratio vs bg-700 ~ 4.5
-    --fg-900: #{hsl_font_code(222, 11, 51)}; // Contrast ratio vs bg-700 ~ 3.51
-    --fg-950: #{hsl_font_code(222, 9, 46.1)}; // Contrast ratio vs bg-700 ~ 3
-    --fg-tinted: #{hsl_font_code(224, 22, 73)}; // Contrast ratio vs bg-700 ~ 6.97
-    --fg-inverted: #{hsl_font_code(222, 20, 6)}; // Contrast ratio vs bg-200 ~ 4.61
-  }
-
   // === LAYOUT ================================================================
 
   --layout-spacing-vertical: 48px;
@@ -55,11 +37,6 @@
   --layout-hr-border: 1px solid var(--hr-border-color, var(--layout-lineart-color));
   --layout-hr-border-dashed: 1px dashed var(--hr-border-color, var(--layout-lineart-color));
   --layout-link-color-hover: var(--fg-100);
-
-  body {
-    --layout-spacing-horizontal: 16px;
-    --layout-spacing-horizontal-small: #{get_clamp(10, 16, 320, 375, '%')};
-  }
 
   // === PAGE ==================================================================
 
@@ -102,6 +79,35 @@
   .tag-pill {
     --tag-inline-color-hover: var(--fg-100);
   }
+
+  // === FOREGROUNDS ===========================================================
+
+  // Placed here due to SCSS/CSS nesting rules
+
+  &,
+  .chapter-formatting {
+    --fg-100: #{hsl_font_code(222, 40, 94)};
+    --fg-200: #{hsl_font_code(222, 26, 90)};
+    --fg-300: #{hsl_font_code(224, 20, 86)};
+    --fg-400: #{hsl_font_code(222, 18, 81)};
+    --fg-500: #{hsl_font_code(222, 18, 73)}; // Contrast ratio vs bg-700 ~ 7.12
+    --fg-600: #{hsl_font_code(224, 18, 68)}; // Contrast ratio vs bg-700 ~ 6.04
+    --fg-700: #{hsl_font_code(224, 16, 62)}; // Contrast ratio vs bg-700 ~ 4.99
+    --fg-800: #{hsl_font_code(222, 12, 58.1)}; // Contrast ratio vs bg-700 ~ 4.5
+    --fg-900: #{hsl_font_code(222, 11, 51)}; // Contrast ratio vs bg-700 ~ 3.51
+    --fg-950: #{hsl_font_code(222, 9, 46.1)}; // Contrast ratio vs bg-700 ~ 3
+    --fg-tinted: #{hsl_font_code(224, 22, 73)}; // Contrast ratio vs bg-700 ~ 6.97
+    --fg-inverted: #{hsl_font_code(222, 20, 6)}; // Contrast ratio vs bg-200 ~ 4.61
+  }
+
+  // === LAYOUT (CONT.) ========================================================
+
+  // Placed here due to SCSS/CSS nesting rules
+
+  body {
+    --layout-spacing-horizontal: 16px;
+    --layout-spacing-horizontal-small: #{get_clamp(10, 16, 320, 375, '%')};
+  }
 }
 
 :root[data-mode=light] {
@@ -110,26 +116,6 @@
   --primary-400: hsl(220, 89%, 52%);
   --primary-500: hsl(221, 79%, 44%);
   --primary-600: hsl(223, 68%, 36%);
-
-  // === FOREGROUNDS ===========================================================
-
-  &,
-  .chapter-formatting {
-    // Needs to be repeated to force recalculation in chapters
-
-    --fg-100: #{hsl_font_code(225, 78, 0)};
-    --fg-200: #{hsl_font_code(224, 69, 3)};
-    --fg-300: #{hsl_font_code(220, 52, 6)};
-    --fg-400: #{hsl_font_code(221, 37, 10)};
-    --fg-500: #{hsl_font_code(225, 25, 15)};
-    --fg-600: #{hsl_font_code(217, 18, 29)};
-    --fg-700: #{hsl_font_code(223, 11, 37)};
-    --fg-800: #{hsl_font_code(220, 9, 45)};
-    --fg-900: #{hsl_font_code(218, 10, 56)};
-    --fg-950: #{hsl_font_code(218, 10, 68)};
-    --fg-tinted: #{hsl_font_code(217, 28, 16)};
-    --fg-inverted: #{hsl_font_code(210, 20, 99)};
-  }
 
   // === NAVIGATION ============================================================
 
@@ -161,6 +147,28 @@
   --follow-title-link-color: var(--navigation-subitem-color);
   --follow-title-link-color-hover: var(--navigation-subitem-color-hover);
   --follow-meta-color: var(--fg-900);
+
+  // === FOREGROUNDS ===========================================================
+
+  // Placed here due to SCSS/CSS nesting rules
+
+  &,
+  .chapter-formatting {
+    // Needs to be repeated to force recalculation in chapters
+
+    --fg-100: #{hsl_font_code(225, 78, 0)};
+    --fg-200: #{hsl_font_code(224, 69, 3)};
+    --fg-300: #{hsl_font_code(220, 52, 6)};
+    --fg-400: #{hsl_font_code(221, 37, 10)};
+    --fg-500: #{hsl_font_code(225, 25, 15)};
+    --fg-600: #{hsl_font_code(217, 18, 29)};
+    --fg-700: #{hsl_font_code(223, 11, 37)};
+    --fg-800: #{hsl_font_code(220, 9, 45)};
+    --fg-900: #{hsl_font_code(218, 10, 56)};
+    --fg-950: #{hsl_font_code(218, 10, 68)};
+    --fg-tinted: #{hsl_font_code(217, 28, 16)};
+    --fg-inverted: #{hsl_font_code(210, 20, 99)};
+  }
 }
 
 :root.minimal {

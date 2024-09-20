@@ -75,6 +75,8 @@
     display: block;
     height: var(--header-logo-height);
     width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 
   &:where(:not(._no-title)) {
