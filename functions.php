@@ -13,6 +13,11 @@ if ( ! defined( 'FICTIONEER_THEME_SWITCH' ) ) {
   define( 'FICTIONEER_THEME_SWITCH', false );
 }
 
+// Integer: Default site width
+if ( ! defined( 'FICTIONEER_DEFAULT_SITE_WIDTH' ) ) {
+  define( 'FICTIONEER_DEFAULT_SITE_WIDTH', 896 );
+}
+
 // Integer: Update check timeout
 if ( ! defined( 'FCNMM_UPDATE_CHECK_TIMEOUT' ) ) {
   define( 'FCNMM_UPDATE_CHECK_TIMEOUT', 43200 ); // 12 hours
