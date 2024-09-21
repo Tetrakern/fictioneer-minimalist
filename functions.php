@@ -313,6 +313,10 @@ function fcnmm_modify_customizers( $manager ) {
   $manager->remove_control( 'header_height_max' );
   $manager->remove_control( 'page_style' );
   $manager->remove_control( 'page_shadow' );
+  $manager->remove_control( 'horizontal_spacing_min' );
+  $manager->remove_control( 'horizontal_spacing_max' );
+  $manager->remove_control( 'horizontal_spacing_small_min' );
+  $manager->remove_control( 'horizontal_spacing_small_max' );
 }
 add_action( 'customize_register', 'fcnmm_modify_customizers', 99 );
 
