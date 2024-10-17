@@ -152,3 +152,18 @@ function fictioneer_sanitize_url( $url, $match = null, $preg_match = null ) {}
  */
 
 function fictioneer_render_icon_menu( $args ) {}
+
+/**
+ * Whether to enable Transients for menus
+ *
+ * @since 5.25.0
+ *
+ * @param string $location  Location identifier of the menu. Possible locations are
+ *                          'nav_menu', 'mobile_nav_menu', and 'footer_menu'.
+ *
+ * @return boolean Either true or false.
+ */
+
+function fictioneer_enable_menu_transients( $location ) {
+  return true;
+}

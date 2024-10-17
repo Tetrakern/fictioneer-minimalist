@@ -516,7 +516,7 @@ if ( $mobile_nav_style === 'collapse' ) {
               if ( has_nav_menu( 'nav_menu' ) ) {
                 $menu = null;
 
-                if ( FICTIONEER_ENABLE_MENU_TRANSIENTS ) {
+                if ( fictioneer_enable_menu_transients( 'nav_menu' ) ) {
                   $menu = get_transient( 'fictioneer_fcnmm_nav_menu_html' );
                 }
 
@@ -536,7 +536,7 @@ if ( $mobile_nav_style === 'collapse' ) {
                     $menu = str_replace( ['current_page_item', 'current-menu-item', 'aria-current="page"'], '', $menu );
                   }
 
-                  if ( FICTIONEER_ENABLE_MENU_TRANSIENTS ) {
+                  if ( fictioneer_enable_menu_transients( 'nav_menu' ) ) {
                     set_transient( 'fictioneer_fcnmm_nav_menu_html', $menu );
                   }
                 }
