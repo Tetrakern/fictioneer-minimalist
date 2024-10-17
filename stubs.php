@@ -142,3 +142,13 @@ function fictioneer_prepare_release_notes( $message ) {}
  */
 
 function fictioneer_sanitize_url( $url, $match = null, $preg_match = null ) {}
+
+/**
+ * Renders the icon menu
+ *
+ * @since 5.25.0
+ *
+ * @param array $args['location']  Either 'in-navigation' or 'in-mobile-menu'.
+ */
+
+function fictioneer_render_icon_menu( $args ) {}

@@ -451,7 +451,7 @@ function fcnmm_header( $args ) {
         ?></div>
         <div class="fcnmm-header__spacer"></div>
         <div class="fcnmm-header__icon-menu"><?php
-          get_template_part( 'partials/_icon-menu', null, array( 'location' => 'in-navigation' ) );
+          fictioneer_render_icon_menu( array( 'location' => 'in-navigation' ) );
         ?></div>
       </div>
     </header>
