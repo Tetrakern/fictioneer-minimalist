@@ -7,7 +7,7 @@
       "uuidString" : "21EE8806-3582-481F-9C0D-9D2A8840CAB0"
     }
   ],
-  "creatorBuild" : "34592",
+  "creatorBuild" : "34627",
   "files" : {
     "\/.gitattributes" : {
       "cB" : 0,
@@ -161,82 +161,71 @@
       "aP" : 0,
       "bl" : 0,
       "co" : 0,
-      "dP" : 10,
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/src\/scss\/_footer.css",
       "oF" : 0,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 0
+      "oS" : 1,
+      "pg" : 0
     },
     "\/src\/scss\/_functions.scss" : {
       "aP" : 0,
       "bl" : 0,
       "co" : 0,
-      "dP" : 10,
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/src\/scss\/_functions.css",
       "oF" : 0,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 0
+      "oS" : 1,
+      "pg" : 0
     },
     "\/src\/scss\/_header.scss" : {
       "aP" : 0,
       "bl" : 0,
       "co" : 0,
-      "dP" : 10,
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/src\/scss\/_header.css",
       "oF" : 0,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 0
+      "oS" : 1,
+      "pg" : 0
     },
     "\/src\/scss\/_mixins.scss" : {
       "aP" : 0,
       "bl" : 0,
       "co" : 0,
-      "dP" : 10,
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/src\/scss\/_mixins.css",
       "oF" : 0,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 0
+      "oS" : 1,
+      "pg" : 0
     },
     "\/src\/scss\/_navigation.scss" : {
       "aP" : 0,
       "bl" : 0,
       "co" : 0,
-      "dP" : 10,
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/src\/scss\/_navigation.css",
       "oF" : 0,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 0
+      "oS" : 1,
+      "pg" : 0
     },
     "\/src\/scss\/fcnmm-style.scss" : {
       "aP" : 0,
       "bl" : 0,
       "co" : 0,
-      "dP" : 10,
       "ec" : 0,
       "ft" : 4,
       "ma" : 0,
@@ -244,8 +233,7 @@
       "oAP" : "\/css\/fcnmm-style.css",
       "oF" : 2,
       "oS" : 3,
-      "pg" : 0,
-      "sct" : 0
+      "pg" : 0
     },
     "\/stubs.php" : {
       "cB" : 0,
@@ -1719,11 +1707,9 @@
       "autoOutputPathReplace1" : "sass",
       "autoOutputPathReplace2" : "css",
       "autoOutputPathStyle" : 0,
-      "compilerType" : 0,
       "cssoStyle" : 0,
-      "decimalPrecision" : 10,
       "emitCharset" : 1,
-      "outputStyle" : 0,
+      "outputStyle" : 1,
       "purgeCSSStyle" : 0,
       "shouldRunAutoprefixer" : 0,
       "shouldRunBless" : 0,
@@ -1838,6 +1824,7 @@
     ],
     "rollupTreeshakingEnabled" : 1,
     "rollupTreeshakingModuleSideEffects" : 1,
+    "sassWarningStyle" : 1,
     "skippedFoldersString" : "log, _logs, logs, _cache, cache, .idea, \/storage\/framework\/sessions, node_modules",
     "sourceFolderName" : "source",
     "susyVersion" : 3,
