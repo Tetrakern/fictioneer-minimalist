@@ -10,7 +10,7 @@
   <a href="https://ko-fi.com/tetrakern"><img alt="Support me on Ko-fi" src="https://img.shields.io/badge/-Ko--fi-FF5E5B?logo=kofi&logoColor=white&style=flat&labelColor=434B57" /></a>
 </p>
 
-This is a minimalist WordPress child theme for [Fictioneer](https://github.com/Tetrakern/fictioneer). To use this theme, ensure that the parent theme is also installed and do not rename any folders. Always download the zip file from the [Releases](https://github.com/Tetrakern/fictioneer-minimalist/releases) page. Requires Fictioneer 5.22.2 or higher.
+This is a minimalist WordPress child theme for [Fictioneer](https://github.com/Tetrakern/fictioneer). To use this theme, ensure that the parent theme is also installed and do not rename any folders. Always download the zip file from the [Releases](https://github.com/Tetrakern/fictioneer-minimalist/releases) page. Requires Fictioneer 5.27.0 or higher.
 
 Fictioneer Minimalist is open source and completely free. If you enjoy the theme, please consider supporting me on [Patreon](https://www.patreon.com/tetrakern), [Ko-fi](https://ko-fi.com/tetrakern), or [GitHub Sponsors](https://github.com/sponsors/Tetrakern).
 
